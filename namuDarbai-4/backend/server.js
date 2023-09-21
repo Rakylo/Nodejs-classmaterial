@@ -10,5 +10,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(PORT, () => {
-  console.log(`server is listening on port ${PORT} `);
+  console.log(`ND4 server is listening on port ${PORT} `);
 });
