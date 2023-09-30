@@ -26,8 +26,6 @@ html {
   text-align: right;
 }
 .frame2 {
-  /* display: flex;
-  flex-wrap: wrap; */
   width: 90%;
   height: 600px;
   background-color: white;

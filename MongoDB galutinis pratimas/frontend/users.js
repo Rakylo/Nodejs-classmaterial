@@ -25,29 +25,28 @@ const usersAll = await getUsers();
 // console.log(usersAll);
 
 // ******************************************************
-let member = [];
-async function getMembershipById(id) {
-  try {
-    console.log(`F: ${id}`);
-    const response = await fetch(`${HOST}/membership/6515a0c0dd2adae0af9a61eb`);
-    if (response.ok) {
-      const data = await response.json();
-      member = data;
-      return member;
-    } else {
-      alert("Something went wrong");
-    }
-  } catch (error) {
-    alert("Catch Something went wrong");
-  }
-}
+// let member = [];
+// async function getMembershipById(id) {
+//   try {
+//     console.log(`F: ${id}`);
+//     const response = await fetch(`${HOST}`);
+//     if (response.ok) {
+//       const data = await response.json();
+//       member = data;
+//       return member;
+//     } else {
+//       alert("Something went wrong");
+//     }
+//   } catch (error) {
+//     alert("Catch Something went wrong");
+//   }
+// }
 
-// ******************************************************
-function generateUsersHtml() {
+async function generateUsersHtml() {
   frame2.innerHTML = "";
 
-  // const userContainer = document.createElement("div");
-  // userContainer.classList.add("user-container");
+  const userContainer = document.createElement("div");
+  userContainer.classList.add("user-container");
 
   const membershipMananger = document.createElement("h1");
   membershipMananger.textContent = "User Management";
@@ -71,32 +70,83 @@ function generateUsersHtml() {
     userContainer.classList.add("user-container");
 
     const name = document.createElement("h3");
-    name.textContent = user.name;
+    name.textContent = user.name + " " + user.surname;
     name.classList.add("user-name");
 
     const userEmail = document.createElement("h5");
-    userEmail.textContent = user.email;
+    userEmail.textContent = `Email: ${user.email}`;
     userEmail.classList.add("email-container");
 
     const userId = document.createElement("h5");
-    userId.textContent = user._id;
+    userId.textContent = `User ID: ${user._id}`;
     userId.classList.add("id-container");
 
-    const membership_id = user.membership_id;
-    console.log(membership_id);
-
-    const member = await getMembershipById(membership_id);
-    // console.log({ member: name });
-
     const membership = document.createElement("h5");
-    // membership.textContent = membership;
-    membership.textContent = member.name;
-    membership.classList.add("user-name");
+    membership.textContent = `Membership: ${user.membership} `;
 
+    // membership.classList.add("membership-container");
     userContainer.append(name, userEmail, membership, userId);
     frame2.append(userContainer);
   });
 }
 
-getUsers();
 generateUsersHtml();
+
+// ******************************************************
+// function generateUsersHtml() {
+//   frame2.innerHTML = "";
+
+// const userContainer = document.createElement("div");
+// userContainer.classList.add("user-container");
+
+//   const membershipMananger = document.createElement("h1");
+//   membershipMananger.textContent = "User Management";
+
+//   const manage = document.createElement("h4");
+//   manage.textContent = "Sorting By name: ";
+
+//   const addMembershipButton = document.createElement("button");
+//   addMembershipButton.textContent = "Add New Membership";
+//   addMembershipButton.classList.add("add-membership-button");
+
+//   const newMemberDiv = document.createElement("div");
+//   newMemberDiv.classList.add("new-member-div");
+//   newMemberDiv.append(addMembershipButton);
+//   headerText.append(newMemberDiv);
+
+//   headerText.append(membershipMananger, manage);
+
+//   usersAll.forEach(async (user) => {
+//     const userContainer = document.createElement("div");
+//     userContainer.classList.add("user-container");
+
+//     const name = document.createElement("h3");
+//     name.textContent = user.name;
+//     name.classList.add("user-name");
+
+//     const userEmail = document.createElement("h5");
+//     userEmail.textContent = user.email;
+//     userEmail.classList.add("email-container");
+
+//     const userId = document.createElement("h5");
+//     userId.textContent = user._id;
+//     userId.classList.add("id-container");
+
+//     const membership_id = user.membership_id;
+//     console.log(membership_id);
+
+//     const member = await getMembershipById(membership_id);
+//     // console.log({ member: name });
+
+//     const membership = document.createElement("h5");
+//     // membership.textContent = membership;
+//     membership.textContent = member.name;
+//     membership.classList.add("user-name");
+
+//     userContainer.append(name, userEmail, membership, userId);
+//     frame2.append(userContainer);
+//   });
+// }
+
+getUsers();
+// generateUsersHtml();

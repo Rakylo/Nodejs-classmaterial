@@ -3,26 +3,27 @@ import {
   deleteUserByName,
   getMemberships,
   getUsersByOrder,
-  postMemberships,
+  postMembership,
   postUsers,
   deleteMembershipByName,
-  getMembershipNamefromUserId,
+  // getMembershipById,
+  addUsersToMembership,
+  getMembershipIdByName,
 } from "./controllers.js";
 
 const router = express.Router();
 
+router.post("/membership", postMembership);
+router.post("/user", postUsers);
+router.post("/user/:userid/member:memberid", addUsersToMembership);
+
+router.get("/membership/:name", getMembershipIdByName);
 router.get("/memberships", getMemberships);
+router.get("/users/:order?", getUsersByOrder);
 
-router.get("/membership/:id", getMembershipNamefromUserId);
-
-router.post("/memberships", postMemberships);
+// router.get("/membership/:id", getMembershipById);
 
 router.delete("/membership/:name", deleteMembershipByName);
-
 router.delete("/user/:name", deleteUserByName);
-
-router.get("/users/:order", getUsersByOrder);
-
-router.post("/users", postUsers);
 
 export default router;

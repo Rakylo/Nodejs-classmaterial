@@ -18,8 +18,8 @@ const UsersSchema = new mongoose.Schema({
     required: true,
   },
   membership: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Memberships",
+    type: String,
+    reguired: true,
   },
 });
 

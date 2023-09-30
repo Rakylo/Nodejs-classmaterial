@@ -29,7 +29,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   width: 90%;
-  height: 600px;
+  /* height: 600px; */
   background-color: rgb(237, 242, 246);
   margin: auto;
   border: 1px solid black;
